@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "265785497294",
+    "project_id": "videoteca777",
+    "storage_bucket": "videoteca777.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265785497294:android:0223c6b36b47654f26629f",
+        "android_client_info": {
+          "package_name": "it.uninsubria.pdm.videoteca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "265785497294-sg94m39s6nfn2v1qqmjff8erb3p1mqq2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbCA6anvPbTwYMh34WMmzutuM1h8n16Y8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "265785497294-sg94m39s6nfn2v1qqmjff8erb3p1mqq2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
