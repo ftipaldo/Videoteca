@@ -3,12 +3,13 @@ package it.uninsubria.pdm.videoteca
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import it.uninsubria.pdm.videoteca.databinding.ActivityMainBinding
+import it.uninsubria.pdm.videoteca.ui.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
-        //val navController = findNavController(R.id.nav_host_fragment_activity_main)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController
 
@@ -35,5 +35,17 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        replaceFragment(HomeFragment())
     }
+
+    private fun replaceFragment(fragment : Fragment){
+
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment)
+        fragmentTransaction.commit()
+    }
+
+
 }

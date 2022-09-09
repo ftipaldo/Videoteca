@@ -24,12 +24,18 @@ class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: FilmViewHolder, position: Int) {
+
         val currentFilm = filmsList[position]
-        holder.itemView.apply {
+
+        holder.title.text = currentFilm.title
+        holder.year.text = currentFilm.year
+        holder.length.text = currentFilm.length
+
+        /* holder.itemView.apply {
             tvFilmTitle.text = currentFilm.title
             tvFilmYear.text = currentFilm.year
             tvFilmLength.text = currentFilm.length
-        }
+        } */
     }
 
     override fun getItemCount(): Int {
