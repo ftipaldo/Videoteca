@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import it.uninsubria.pdm.videoteca.R
 import kotlinx.android.synthetic.main.film_in_list.view.*
 
-class FilmAdapter(private val filmsList: MutableList<Film>) : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>() {
+class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>() {
+
+    private val filmsList = ArrayList<Film>()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmViewHolder {
         return FilmViewHolder(
@@ -31,6 +34,12 @@ class FilmAdapter(private val filmsList: MutableList<Film>) : RecyclerView.Adapt
 
     override fun getItemCount(): Int {
         return filmsList.size
+    }
+
+    fun updateFilmList(filmsList : List<Film>){
+        this.filmsList.clear()
+        this.filmsList.addAll(filmsList)
+        notifyDataSetChanged()
     }
 
     class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){

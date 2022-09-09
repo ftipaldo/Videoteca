@@ -6,20 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.DatabaseReference
+import it.uninsubria.pdm.videoteca.R
 import it.uninsubria.pdm.videoteca.databinding.FragmentHomeBinding
-import it.uninsubria.pdm.videoteca.ui.Film
-import kotlinx.android.synthetic.*
+import it.uninsubria.pdm.videoteca.ui.FilmAdapter
+
 
 class HomeFragment : Fragment() {
 
-    /*
-        private lateinit var dbref : DatabaseReference
+
+        private lateinit var viewModel: HomeViewModel
         private lateinit var filmRecyclerView: RecyclerView
-        private lateinit var filmArrayList: ArrayList<Film>
-    */
+        private lateinit var adapter: FilmAdapter
+
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -28,20 +30,6 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-
-        /*
-            //filmRecyclerView = findViewById(R.id.filmsList)
-            //filmRecyclerView.layoutManager = LinearLayoutManager(this)
-            //filmRecyclerView.setHasFixedSize(true)
-            //filmArrayList = arrayListOf<Film>()
-            //getFilmData()
-
-        private getFilmData(){
-            dbref = FirebaseDatabase.getInstance().getReference("Films")
-        }
-        */
-
-
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -63,4 +51,25 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        filmRecyclerView = view.findViewById(R.id.rvFilm)
+        filmRecyclerView.layoutManager = LinearLayoutManager(context)
+        filmRecyclerView.setHasFixedSize(true)
+        adapter = FilmAdapter()
+        filmRecyclerView.adapter = adapter
+
+        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+
+        viewModel.allFilms.observe(viewLifecycleOwner, Observer{
+            adapter.updateFilmList(it)
+        })
+
+
+    }
+
+
 }
