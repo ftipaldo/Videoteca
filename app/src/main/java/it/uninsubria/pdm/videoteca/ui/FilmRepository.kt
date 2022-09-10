@@ -5,7 +5,6 @@ import com.google.firebase.database.*
 import java.lang.Exception
 
 class FilmRepository {
-
     private val databaseReference : DatabaseReference = FirebaseDatabase.getInstance().getReference("Films")
 
     @Volatile private var INSTANCE : FilmRepository ?= null
@@ -18,24 +17,21 @@ class FilmRepository {
         }
     }
 
-
     fun loadFilms(filmList: MutableLiveData<List<Film>>){
         databaseReference.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 try {
-                    val _filmList : List<Film> = snapshot.children.map { dataSnapshot ->  
+                    val _filmList : List<Film> = snapshot.children.map { dataSnapshot ->
                         dataSnapshot.getValue(Film::class.java)!!
                     }
                     filmList.postValue(_filmList)
                 } catch (e : Exception){
-
                 }
             }
 
             override fun onCancelled(p0: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
         })
     }
 

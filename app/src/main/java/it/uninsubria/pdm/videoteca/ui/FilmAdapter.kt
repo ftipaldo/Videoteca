@@ -58,7 +58,4 @@ class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>() {
     }
 
 
-
-
-
 }

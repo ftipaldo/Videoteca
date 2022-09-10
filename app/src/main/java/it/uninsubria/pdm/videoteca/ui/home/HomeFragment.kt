@@ -17,13 +17,11 @@ import it.uninsubria.pdm.videoteca.ui.FilmAdapter
 
 class HomeFragment : Fragment() {
 
-
         private lateinit var viewModel: HomeViewModel
         private lateinit var filmRecyclerView: RecyclerView
         private lateinit var adapter: FilmAdapter
 
-
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentHomeBinding ?= null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -67,8 +65,6 @@ class HomeFragment : Fragment() {
         viewModel.allFilms.observe(viewLifecycleOwner, Observer{
             adapter.updateFilmList(it)
         })
-
-
     }
 
 
