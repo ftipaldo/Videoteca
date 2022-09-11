@@ -36,16 +36,18 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        replaceFragment(HomeFragment())
+        //replaceFragment(HomeFragment())
     }
 
-    private fun replaceFragment(fragment : Fragment){
+ /*
+    //serve in caso di mancanza della navbar (predefined)
+  private fun replaceFragment(fragment : Fragment){
 
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment)
         fragmentTransaction.commit()
-    }
+    } */
 
 
 }

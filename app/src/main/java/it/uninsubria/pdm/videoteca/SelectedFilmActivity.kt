@@ -18,27 +18,26 @@ class SelectedFilmActivity : AppCompatActivity() {
         binding = FilmSpecificBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val childName = "1978_Grease"       //poi bisognerà riceverlo come parametro
+        val film_nodeName = "1978_Grease"       //poi bisognerà riceverlo come parametro
 
         database = FirebaseDatabase.getInstance().getReference("Films")
-        database.child(childName).get().addOnSuccessListener{
-            val title = it.child("title").value
-            val director = it.child("director").value
-            val year = it.child("year").value
-            val length = it.child("length").value
-            val description = it.child("description").value
-            val availability = it.child("availability").value
-            binding.tvSpecificFilmTitle.text = title.toString()
-            binding.tvSpecificFilmDirector.text = director.toString()
-            binding.tvSpecificFilmYear.text = year.toString()
-            binding.tvSpecificFilmLength.text = length.toString()
-            binding.tvSpecificFilmDescription.text = description.toString()
-            binding.tvSpecificFilmAvailability.text = "available: " + availability.toString()
+        database.child(film_nodeName).get().addOnSuccessListener{
+            val title = it.child("title").value.toString()
+            val director = it.child("director").value.toString()
+            val year = it.child("year").value.toString()
+            val length = it.child("length").value.toString()
+            val description = it.child("description").value.toString()
+            val availability = it.child("availability").value.toString()
+            binding.tvSpecificFilmTitle.text = title
+            binding.tvSpecificFilmDirector.text = director
+            binding.tvSpecificFilmYear.text = year
+            binding.tvSpecificFilmLength.text = length
+            binding.tvSpecificFilmDescription.text = description
+            binding.tvSpecificFilmAvailability.text = "available: " + availability
             binding.btnSpecificFilmCommit.text = ">"
 
-            //val filmSelected = Film(title.toString(), director.toString(), year.toString(), length.toString(), description.toString(), availability.toString())
             binding.btnSpecificFilmCommit.setOnClickListener {
-                rentFilm(childName, title.toString(), director.toString(), year.toString(), length.toString(), description.toString(), availability.toString())
+                rentFilm(film_nodeName, availability)
             }
         }.addOnFailureListener {
             Toast.makeText(this, "404 Film Not Found", Toast.LENGTH_SHORT).show()
@@ -48,29 +47,37 @@ class SelectedFilmActivity : AppCompatActivity() {
 
     }
 
-    private fun rentFilm(childName:String, title:String, director:String, year:String, length:String, description:String, availability:String, ){
+    private fun rentFilm(film_nodeName:String, availability:String){
         //lock sul db (?)
         //leggi valore availability
         //decrementa
         //scrivi nuovo valore sul db
         //aggiungi child in Users > id > Rentals con l'id del film (yyyy_fffff)
         //rimuovo il lock sul db
-        val newAvailability = (availability.toInt() - 1)
-        database = FirebaseDatabase.getInstance().getReference("Films")
-        val filmMap = mapOf<String,String>(
-            "title" to title,
-            "director" to director,
-            "year" to year,
-            "length" to length,
-            "description" to description,
-            "availability" to newAvailability.toString()
-        )
 
-        database.child(childName).updateChildren(filmMap).addOnSuccessListener{
-            Toast.makeText(this, "Film rented", Toast.LENGTH_SHORT).show()
+        val newAvailability = (availability.toInt() - 1).toString()
+        val film_map = mapOf<String,String>(
+            "availability" to newAvailability
+        )
+        database = FirebaseDatabase.getInstance().getReference("Films")
+        database.child(film_nodeName).updateChildren(film_map).addOnSuccessListener{
+            //Toast.makeText(this, "decremented", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener {
-            Toast.makeText(this, "Film NOT rented", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "NOT decremented", Toast.LENGTH_SHORT).show()
         }
+
+        val user_nodeName = "user001"       //poi bisognerà riceverlo come parametro
+        val user_map = mapOf<String,String>(
+            film_nodeName to "11/09/2022"       //poi data corrente
+        )
+        database = FirebaseDatabase.getInstance().getReference("Users")
+        database.child(user_nodeName).child("Rentals").updateChildren(user_map).addOnSuccessListener{
+            //Toast.makeText(this, "Film rented", Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener {
+            //Toast.makeText(this, "Film NOT rented", Toast.LENGTH_SHORT).show()
+        }
+
+
 
     }
 

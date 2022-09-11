@@ -38,10 +38,22 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
+
+        filmRecyclerView = binding.rvFilm
+        filmRecyclerView.layoutManager = LinearLayoutManager(context)
+        filmRecyclerView.setHasFixedSize(true)
+        adapter = FilmAdapter()
+        filmRecyclerView.adapter = adapter
+        homeViewModel.allFilms.observe(viewLifecycleOwner, Observer{
+            adapter.updateFilmList(it)
+        })
+
+        /* val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        }
+
+        } */
+
         return root
     }
 
@@ -51,7 +63,7 @@ class HomeFragment : Fragment() {
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    /* override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         filmRecyclerView = view.findViewById(R.id.rvFilm)
@@ -65,7 +77,7 @@ class HomeFragment : Fragment() {
         viewModel.allFilms.observe(viewLifecycleOwner, Observer{
             adapter.updateFilmList(it)
         })
-    }
+    } */
 
 
 }

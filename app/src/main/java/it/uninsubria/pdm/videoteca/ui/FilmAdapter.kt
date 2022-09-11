@@ -18,7 +18,7 @@ class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>() {
             LayoutInflater.from(parent.context).inflate(
                 R.layout.film_in_list,
                 parent,
-                false,
+                false
             )
         )
     }
