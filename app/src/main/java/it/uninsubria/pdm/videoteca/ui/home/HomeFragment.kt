@@ -17,9 +17,9 @@ import it.uninsubria.pdm.videoteca.ui.FilmAdapter
 
 class HomeFragment : Fragment() {
 
-        private lateinit var viewModel: HomeViewModel
-        private lateinit var filmRecyclerView: RecyclerView
-        private lateinit var adapter: FilmAdapter
+    //private lateinit var viewModel: HomeViewModel
+    private lateinit var filmRecyclerView: RecyclerView
+    private lateinit var adapter: FilmAdapter
 
     private var _binding: FragmentHomeBinding ?= null
 

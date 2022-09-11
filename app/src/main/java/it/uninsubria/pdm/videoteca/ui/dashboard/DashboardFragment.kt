@@ -6,10 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import it.uninsubria.pdm.videoteca.databinding.FragmentDashboardBinding
+import it.uninsubria.pdm.videoteca.ui.FilmAdapter
 
 class DashboardFragment : Fragment() {
+
+    private lateinit var filmRecyclerView: RecyclerView
+    private lateinit var adapter: FilmAdapter
 
     private var _binding: FragmentDashboardBinding? = null
 
@@ -28,10 +35,19 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
+
+        filmRecyclerView = binding.rvFilmDashboard
+        filmRecyclerView.layoutManager = LinearLayoutManager(context)
+        filmRecyclerView.setHasFixedSize(true)
+        adapter = FilmAdapter()
+        filmRecyclerView.adapter = adapter
+        dashboardViewModel.allFilms.observe(viewLifecycleOwner, Observer{
+            adapter.updateDashboardFilmList(it)
+        })
+
+
+
         return root
     }
 

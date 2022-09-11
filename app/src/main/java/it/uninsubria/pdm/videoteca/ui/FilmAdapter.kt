@@ -48,6 +48,13 @@ class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>() {
         notifyDataSetChanged()
     }
 
+    fun updateDashboardFilmList(filmsList : List<Film>){
+        this.filmsList.clear()
+        this.filmsList.add(1, filmsList[1])
+        //this.filmsList.addAll(filmsList)
+        notifyDataSetChanged()
+    }
+
     class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val title: TextView = itemView.findViewById(R.id.tvFilmTitle)
         //val director: TextView = itemView.findViewById(R.id.   )

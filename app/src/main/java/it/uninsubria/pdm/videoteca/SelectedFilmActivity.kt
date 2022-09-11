@@ -6,19 +6,20 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import it.uninsubria.pdm.videoteca.databinding.FilmSpecificBinding
-import it.uninsubria.pdm.videoteca.ui.Film
 
 class SelectedFilmActivity : AppCompatActivity() {
 
     private lateinit var binding: FilmSpecificBinding
     private lateinit var database: DatabaseReference
 
+    private val film_nodeName = "1978_Grease"       //poi bisognerà riceverlo come parametro
+    private val user_nodeName = "user001"           //poi bisognerà riceverlo come parametro
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FilmSpecificBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val film_nodeName = "1978_Grease"       //poi bisognerà riceverlo come parametro
 
         database = FirebaseDatabase.getInstance().getReference("Films")
         database.child(film_nodeName).get().addOnSuccessListener{
@@ -43,17 +44,17 @@ class SelectedFilmActivity : AppCompatActivity() {
             Toast.makeText(this, "404 Film Not Found", Toast.LENGTH_SHORT).show()
         }
 
-
-
     }
+
+
 
     private fun rentFilm(film_nodeName:String, availability:String){
         //lock sul db (?)
         //leggi valore availability
-        //decrementa
+        //decrementi
         //scrivi nuovo valore sul db
         //aggiungi child in Users > id > Rentals con l'id del film (yyyy_fffff)
-        //rimuovo il lock sul db
+        //rimuovi il lock sul db
 
         val newAvailability = (availability.toInt() - 1).toString()
         val film_map = mapOf<String,String>(
@@ -66,7 +67,6 @@ class SelectedFilmActivity : AppCompatActivity() {
             //Toast.makeText(this, "NOT decremented", Toast.LENGTH_SHORT).show()
         }
 
-        val user_nodeName = "user001"       //poi bisognerà riceverlo come parametro
         val user_map = mapOf<String,String>(
             film_nodeName to "11/09/2022"       //poi data corrente
         )
@@ -76,8 +76,6 @@ class SelectedFilmActivity : AppCompatActivity() {
         }.addOnFailureListener {
             //Toast.makeText(this, "Film NOT rented", Toast.LENGTH_SHORT).show()
         }
-
-
 
     }
 

@@ -13,6 +13,7 @@ class NewFilmActivity : AppCompatActivity() {
     private lateinit var binding: FilmNewBinding
     private lateinit var database : DatabaseReference
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FilmNewBinding.inflate(layoutInflater)
@@ -41,9 +42,10 @@ class NewFilmActivity : AppCompatActivity() {
             }.addOnFailureListener {
                 Toast.makeText(this, "FAILED", Toast.LENGTH_SHORT).show()
             }
-
         }
     }
+
+
 }
 
 
