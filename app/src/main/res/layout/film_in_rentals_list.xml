@@ -3,12 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="100dp">
 
 
     <TextView
-        android:id="@+id/tvFilmTitle"
+        android:id="@+id/tvRenFilmTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -22,25 +21,14 @@
 
     <TextView
         android:id="@+id/tvFilmYear"
-        android:layout_width="80dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="1997"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFilmTitle" />
-
-    <TextView
-        android:id="@+id/tvFilmLength"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:text="3h 14m"
+        android:text="rented on 12/09/2022"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvFilmYear"
-        app:layout_constraintTop_toBottomOf="@+id/tvFilmTitle" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRenFilmTitle" />
 
     <View
         android:id="@+id/divider"

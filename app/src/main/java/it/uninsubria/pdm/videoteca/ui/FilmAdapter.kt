@@ -50,7 +50,9 @@ class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>() {
 
     fun updateDashboardFilmList(filmsList : List<Film>){
         this.filmsList.clear()
-        this.filmsList.add(1, filmsList[1])
+        val dim = filmsList.size
+        this.filmsList.add(0, filmsList[dim-1])
+        this.filmsList.add(1, filmsList[dim-2])
         //this.filmsList.addAll(filmsList)
         notifyDataSetChanged()
     }

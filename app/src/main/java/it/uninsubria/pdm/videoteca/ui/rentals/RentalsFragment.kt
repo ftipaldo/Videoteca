@@ -6,10 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import it.uninsubria.pdm.videoteca.databinding.FragmentRentalsBinding
+import it.uninsubria.pdm.videoteca.ui.FilmAdapter
 
 class RentalsFragment : Fragment() {
+
+    private lateinit var filmRecyclerView: RecyclerView
+    private lateinit var adapter: FilmAdapter
 
     private var _binding: FragmentRentalsBinding? = null
 
@@ -27,6 +34,17 @@ class RentalsFragment : Fragment() {
 
         _binding = FragmentRentalsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+
+        filmRecyclerView = binding.rvFilmRentals
+        filmRecyclerView.layoutManager = LinearLayoutManager(context)
+        filmRecyclerView.setHasFixedSize(true)
+        adapter = FilmAdapter()
+        filmRecyclerView.adapter = adapter
+        rentalsViewModel.allFilms.observe(viewLifecycleOwner, Observer{
+            adapter.updateFilmList(it)
+        })
+
 
 
         return root

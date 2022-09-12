@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Videoteca</string>
     <string name="title_home">Home</string>
-    <string name="title_highlights">Vetrina</string>
-    <string name="title_rentals">Noleggi</string>
+    <string name="title_highlights">Newest</string>
+    <string name="title_rentals">Rentals</string>
+    <string name="insert_email_error">Please enter an email</string>
+    <string name="insert_password_error">Please enter a password</string>
+    <string name="valid_mail_error">Please enter a valid email</string>
+    <string name="valid_password_error">Please enter a valid password</string>
+    <string name="login_success">Login Successful</string>
 </resources>
