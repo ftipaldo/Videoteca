@@ -1,9 +1,11 @@
 package it.uninsubria.pdm.videoteca.ui
 
 import androidx.lifecycle.MutableLiveData
+import com.google.android.gms.tasks.Task
 import com.google.firebase.database.*
 import java.lang.Exception
 import java.util.*
+import kotlin.collections.ArrayList
 
 class FilmRepository {
     private val databaseReferenceFilms : DatabaseReference = FirebaseDatabase.getInstance().getReference("Films")
@@ -42,27 +44,25 @@ class FilmRepository {
         databaseReferenceRentals.child(UID).addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 try {
-                    // val list : List<Objects> = snapshot.children.map {
-                    //        dataSnapshot -> dataSnapshot.getValue(Objects::class.java)!! }
-
-                        val RFL : MutableList<Ren>
+                        val RFL : MutableList<Ren> = ArrayList()
                         //loop to go through all the child nodes of UID node
-                        for (snap: DataSnapshot in snapshot.child(UID).children) {
+                        for (snap: DataSnapshot in snapshot.children) {
                             //recupero le info del nodo visitato
                             val kEy = snap.key.toString()
                             val vAl = snap.value.toString()  //snap.value potrebbe essere null, devo gestirlo ?
                             //recupero il titolo del film dal DB
-                            databaseReferenceFilms.child(kEy).get().addOnSuccessListener {
-                                val renObj = Ren (
-                                filmID = kEy,
-                                filmTitle = it.child("title").value.toString(),
-                                filmDate = vAl )
+                            var abc = databaseReferenceFilms.child(kEy).get()
+                            while (! abc.isComplete){}
+                            val renObj = Ren (
+                                renFilmID = kEy,
+                                renFilmTitle = abc.result.child("title").value.toString(),
+                                renFilmDate = vAl )
                             //aggiungo l'oggetto alla lista RFL da restituire
-                            //RFL.add(renObj)
-                            }
+                            RFL.add(renObj)
                         }
-                    //rentalsList.postValue(RFL)
+                    rentalsList.postValue(RFL)
                 } catch (e : Exception){
+                    val x = e.message
                 }
             }
 

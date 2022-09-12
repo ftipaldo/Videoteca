@@ -14,13 +14,13 @@
         android:layout_marginEnd="16dp"
         android:text="Titanic"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvFilmYear"
+        app:layout_constraintBottom_toTopOf="@+id/tvRenFilmDate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvFilmYear"
+        android:id="@+id/tvRenFilmDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="rented on 12/09/2022"

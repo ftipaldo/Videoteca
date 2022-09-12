@@ -11,6 +11,16 @@ import kotlinx.android.synthetic.main.film_in_list.view.*
 class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>() {
 
     private val filmsList = ArrayList<Film>()
+    private lateinit var mListener : onItemClickListener
+
+
+    interface onItemClickListener{
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: onItemClickListener){
+        mListener = listener
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmViewHolder {
@@ -19,7 +29,7 @@ class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>() {
                 R.layout.film_in_list,
                 parent,
                 false
-            )
+            ),mListener
         )
     }
 
@@ -57,13 +67,19 @@ class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>() {
         notifyDataSetChanged()
     }
 
-    class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class FilmViewHolder(itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView){
         val title: TextView = itemView.findViewById(R.id.tvFilmTitle)
         //val director: TextView = itemView.findViewById(R.id.   )
         val year: TextView = itemView.findViewById(R.id.tvFilmYear)
         val length: TextView = itemView.findViewById(R.id.tvFilmLength)
         //val description: TextView = itemView.findViewById(R.id.   )
         //val availability: TextView = itemView.findViewById(R.id.   )
+
+        init {
+            itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
+        }
     }
 
 

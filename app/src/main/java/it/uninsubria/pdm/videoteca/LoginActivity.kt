@@ -61,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
                                     Toast.makeText(
                                         this@LoginActivity,
                                         getString(R.string.login_success),
-                                        Toast.LENGTH_LONG
+                                        Toast.LENGTH_SHORT
                                     ).show()
 
 

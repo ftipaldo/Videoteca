@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,11 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import it.uninsubria.pdm.videoteca.databinding.FragmentRentalsBinding
 import it.uninsubria.pdm.videoteca.ui.FilmAdapter
+import it.uninsubria.pdm.videoteca.ui.FilmRentedAdapter
 
 class RentalsFragment : Fragment() {
 
     private lateinit var filmRecyclerView: RecyclerView
-    private lateinit var adapter: FilmAdapter
+    private lateinit var adapter: FilmRentedAdapter
 
     private var _binding: FragmentRentalsBinding? = null
 
@@ -39,8 +41,15 @@ class RentalsFragment : Fragment() {
         filmRecyclerView = binding.rvFilmRentals
         filmRecyclerView.layoutManager = LinearLayoutManager(context)
         filmRecyclerView.setHasFixedSize(true)
-        adapter = FilmAdapter()
+        adapter = FilmRentedAdapter()
         filmRecyclerView.adapter = adapter
+
+        adapter.setOnItemClickListener(object : FilmRentedAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                Toast.makeText(activity, "element n. $position", Toast.LENGTH_SHORT).show()
+            }
+        })
+
         rentalsViewModel.allFilms.observe(viewLifecycleOwner, Observer{
             adapter.updateFilmList(it)
         })
