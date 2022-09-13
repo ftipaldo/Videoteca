@@ -40,22 +40,22 @@ class FilmRepository {
     }
 
 
-    fun loadRentals(rentalsList: MutableLiveData<List<Ren>>, UID : String){
-        databaseReferenceRentals.child(UID).addValueEventListener(object : ValueEventListener{
+    fun loadRentals(rentalsList: MutableLiveData<List<Ren>>, pUserId : String){
+        databaseReferenceRentals.child(pUserId).addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 try {
                         val RFL : MutableList<Ren> = ArrayList()
-                        //loop to go through all the child nodes of UID node
+                        //loop sui nodi figli di pUserId
                         for (snap: DataSnapshot in snapshot.children) {
                             //recupero le info del nodo visitato
                             val kEy = snap.key.toString()
                             val vAl = snap.value.toString()  //snap.value potrebbe essere null, devo gestirlo ?
                             //recupero il titolo del film dal DB
-                            var abc = databaseReferenceFilms.child(kEy).get()
-                            while (! abc.isComplete){}
+                            var infoFilm = databaseReferenceFilms.child(kEy).get()
+                            while (! infoFilm.isComplete){}
                             val renObj = Ren (
                                 renFilmID = kEy,
-                                renFilmTitle = abc.result.child("title").value.toString(),
+                                renFilmTitle = infoFilm.result.child("title").value.toString(),
                                 renFilmDate = vAl )
                             //aggiungo l'oggetto alla lista RFL da restituire
                             RFL.add(renObj)

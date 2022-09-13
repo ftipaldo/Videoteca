@@ -1,5 +1,6 @@
 package it.uninsubria.pdm.videoteca.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,14 +12,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import it.uninsubria.pdm.videoteca.GlobalVar
+import it.uninsubria.pdm.videoteca.MainActivity
 import it.uninsubria.pdm.videoteca.R
+import it.uninsubria.pdm.videoteca.SelectedFilmActivity
 import it.uninsubria.pdm.videoteca.databinding.FragmentHomeBinding
 import it.uninsubria.pdm.videoteca.ui.FilmAdapter
+import kotlinx.android.synthetic.main.activity_main.view.*
 
 
 class HomeFragment : Fragment() {
 
-    //private lateinit var viewModel: HomeViewModel
     private lateinit var filmRecyclerView: RecyclerView
     private lateinit var adapter: FilmAdapter
 
@@ -27,6 +31,7 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,7 +55,15 @@ class HomeFragment : Fragment() {
             override fun onItemClick(position: Int) {
                 val film = homeViewModel.allFilms.value?.get(position)
                 if (film != null) {
-                    Toast.makeText(activity, "element n. $position, film ${film.title}", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(activity, "element n. $position, film ${film.title}", Toast.LENGTH_SHORT).show()
+                    val filmId = "${film.year}" + "_" + "${film.title}"
+                    val intent =
+                        Intent(activity, SelectedFilmActivity::class.java)
+                    intent.flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    intent.putExtra("filmId", filmId)
+                    startActivity(intent)
+
                 }
             }
         })
@@ -61,9 +74,7 @@ class HomeFragment : Fragment() {
 
         /* val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-
-        } */
+            textView.text = it } */
 
         return root
     }

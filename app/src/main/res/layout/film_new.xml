@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="match_parent"
     android:layout_margin="8dp"
     tools:context=".NewFilmActivity">
 
@@ -62,18 +62,27 @@
         android:id="@+id/etNewFilmAvailability"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
         android:hint="Availability"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnAddNewFilm"
-        android:layout_width="50dp"
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:text="+"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddNewFilm"
+        app:layout_constraintStart_toEndOf="@+id/etNewFilmAvailability" />
+
+    <Button
+        android:id="@+id/btnAddNewFilm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -1,5 +1,6 @@
 package it.uninsubria.pdm.videoteca.ui.rentals
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import it.uninsubria.pdm.videoteca.GlobalVar
+import it.uninsubria.pdm.videoteca.RentedFilmActivity
+import it.uninsubria.pdm.videoteca.SelectedFilmActivity
 import it.uninsubria.pdm.videoteca.databinding.FragmentRentalsBinding
 import it.uninsubria.pdm.videoteca.ui.FilmAdapter
 import it.uninsubria.pdm.videoteca.ui.FilmRentedAdapter
@@ -25,6 +29,7 @@ class RentalsFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,7 +51,17 @@ class RentalsFragment : Fragment() {
 
         adapter.setOnItemClickListener(object : FilmRentedAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                Toast.makeText(activity, "element n. $position", Toast.LENGTH_SHORT).show()
+                val film = rentalsViewModel.allFilms.value?.get(position)
+                if (film != null) {
+                    //Toast.makeText(activity, "element n. $position, film ${film.renFilmID}", Toast.LENGTH_SHORT).show()
+                val filmId = "${film.renFilmID}"
+                val intent =
+                    Intent(activity, RentedFilmActivity::class.java)
+                intent.flags =
+                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                intent.putExtra("filmId", filmId)
+                startActivity(intent)
+                }
             }
         })
 

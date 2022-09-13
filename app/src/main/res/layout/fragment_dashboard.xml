@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="65dp"
+        android:backgroundTint="@color/teal_700"
+        android:text="Add"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFilmDashboard"
         android:layout_width="match_parent"

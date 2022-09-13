@@ -1,9 +1,12 @@
 package it.uninsubria.pdm.videoteca
 
+import android.app.Application
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -14,16 +17,16 @@ import it.uninsubria.pdm.videoteca.ui.home.HomeFragment
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    lateinit var pUserId: String
+    //lateinit var pUserId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if(intent.hasExtra("userId")) {
-            pUserId = intent.getStringExtra("userId")!!
-        }
+        // temporaneo !!
+        GlobalVar.glbUserId = "NonLoggato"
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+
+            binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
@@ -41,18 +44,24 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+
+
         //replaceFragment(HomeFragment())
     }
 
- /*
-    //serve in caso di mancanza della navbar (predefined)
-  private fun replaceFragment(fragment : Fragment){
 
+
+
+ /*
+    //serve in caso di mancanza della navbar (predefinita)
+  private fun replaceFragment(fragment : Fragment){
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment)
         fragmentTransaction.commit()
     } */
+
+
 
 
 }

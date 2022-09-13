@@ -1,5 +1,6 @@
 package it.uninsubria.pdm.videoteca.ui.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +12,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import it.uninsubria.pdm.videoteca.*
 import it.uninsubria.pdm.videoteca.databinding.FragmentDashboardBinding
 import it.uninsubria.pdm.videoteca.ui.FilmAdapter
+
 
 class DashboardFragment : Fragment() {
 
@@ -25,6 +28,9 @@ class DashboardFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    //aggiungere global var isAdmin
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,6 +42,15 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+//aggiungere controllo admin
+        binding.btnAdd.text = getString(R.string.btn_add_new_film)
+        binding.btnAdd.setOnClickListener {
+            val intent =
+                Intent(activity, NewFilmActivity::class.java)
+            intent.flags =
+                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
 
 
         filmRecyclerView = binding.rvFilmDashboard
@@ -46,7 +61,17 @@ class DashboardFragment : Fragment() {
 
         adapter.setOnItemClickListener(object : FilmAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                Toast.makeText(activity, "element n. $position", Toast.LENGTH_SHORT).show()
+                val film = dashboardViewModel.allFilms.value?.get(position)
+                if (film != null) {
+                    //Toast.makeText(activity, "element n. $position, film ${film.title}", Toast.LENGTH_SHORT).show()
+                    val filmId = "${film.year}" + "_" + "${film.title}"
+                    val intent =
+                        Intent(activity, SelectedFilmActivity::class.java)
+                    intent.flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    intent.putExtra("filmId", filmId)
+                    startActivity(intent)
+                }
             }
         })
 

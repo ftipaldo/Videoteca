@@ -17,7 +17,6 @@ import it.uninsubria.pdm.videoteca.databinding.ActivityLoginBinding
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-    //private lateinit var database : DatabaseReference
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,12 +64,13 @@ class LoginActivity : AppCompatActivity() {
                                     ).show()
 
 
+                                    GlobalVar.glbUserId = firebaseUser.uid
+
                                     val intent =
                                         Intent(this@LoginActivity, MainActivity::class.java)
                                     intent.flags =
                                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                    intent.putExtra("userId", firebaseUser.uid)
-                                    //intent.putExtra("email", email)
+                                    //intent.putExtra("userId", firebaseUser.uid)
                                     startActivity(intent)
                                     finish()
                                 } else {
@@ -85,31 +85,11 @@ class LoginActivity : AppCompatActivity() {
             }
 
 
-/*
-            val userName = binding.etEmailLogin.text.toString()
-            val psw = binding.etPasswordLogin.text.toString()
-            val user_nodeName = userName
-
-            database = FirebaseDatabase.getInstance().getReference("Users")
-            database.child(user_nodeName).get().addOnSuccessListener{
-                val pswFirebase = it.child("password").value.toString()
-                if (psw == pswFirebase){
-                    binding.etEmailLogin.text.clear()
-                    binding.etPasswordLogin.text.clear()
-                    Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show()
-                    //chiamo la MainActivity passandole lo username come parametro
-                } else {
-                    Toast.makeText(this, "Wrong username or password", Toast.LENGTH_SHORT).show()
-                }
-            }.addOnFailureListener {
-                Toast.makeText(this, "FAILED", Toast.LENGTH_SHORT).show()
-            }
-*/
-
-
         }
 
     }
+
+
 
 
     private fun pCheckEmail(parEmail : String) : Boolean

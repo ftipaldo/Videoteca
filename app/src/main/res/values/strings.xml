@@ -8,4 +8,15 @@
     <string name="valid_mail_error">Please enter a valid email</string>
     <string name="valid_password_error">Please enter a valid password</string>
     <string name="login_success">Login Successful</string>
+    <string name="rent_successful">Film rented</string>
+    <string name="rent_unsuccessful">Film NOT rented</string>
+    <string name="rent_no_availability">No availability</string>
+    <string name="unrent_successful">Film unrented</string>
+    <string name="unrent_unsuccessful">Film NOT unrented</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_add">Add</string>
+    <string name="btn_add_new_film">Add New Film</string>
+    <string name="btn_commit_rent">Rent</string>
+    <string name="btn_commit_unrent">Unrent</string>
+    <string name="available">available: </string>
 </resources>
