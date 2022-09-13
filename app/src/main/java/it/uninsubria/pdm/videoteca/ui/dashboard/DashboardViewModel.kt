@@ -14,7 +14,7 @@ class DashboardViewModel : ViewModel() {
 
     init {
         repository = FilmRepository().getInstance()
-        repository.loadFilms(_allFilms)
+        repository.loadDashboardFilms(_allFilms)
     }
 
     /* private val _text = MutableLiveData<String>().apply {

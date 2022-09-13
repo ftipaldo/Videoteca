@@ -76,7 +76,7 @@ class DashboardFragment : Fragment() {
         })
 
         dashboardViewModel.allFilms.observe(viewLifecycleOwner, Observer{
-            adapter.updateDashboardFilmList(it)
+            adapter.updateFilmList(it)
         })
 
 

@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import it.uninsubria.pdm.videoteca.GlobalVar
-import it.uninsubria.pdm.videoteca.ui.Film
 import it.uninsubria.pdm.videoteca.ui.FilmRepository
 import it.uninsubria.pdm.videoteca.ui.Ren
 

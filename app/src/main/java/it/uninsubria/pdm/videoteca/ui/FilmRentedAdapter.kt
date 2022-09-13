@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import it.uninsubria.pdm.videoteca.R
-import kotlinx.android.synthetic.main.film_in_list.view.*
+
 
 class FilmRentedAdapter : RecyclerView.Adapter<FilmRentedAdapter.RentedFilmViewHolder>() {
 

@@ -63,7 +63,6 @@ class HomeFragment : Fragment() {
                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     intent.putExtra("filmId", filmId)
                     startActivity(intent)
-
                 }
             }
         })

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import it.uninsubria.pdm.videoteca.R
-import kotlinx.android.synthetic.main.film_in_list.view.*
+
 
 class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>() {
 
@@ -40,12 +40,6 @@ class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>() {
         holder.title.text = currentFilm.title
         holder.year.text = currentFilm.year
         holder.length.text = currentFilm.length
-
-        /* holder.itemView.apply {
-            tvFilmTitle.text = currentFilm.title
-            tvFilmYear.text = currentFilm.year
-            tvFilmLength.text = currentFilm.length
-        } */
     }
 
     override fun getItemCount(): Int {
@@ -58,14 +52,25 @@ class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>() {
         notifyDataSetChanged()
     }
 
-    fun updateDashboardFilmList(filmsList : List<Film>){
+
+  /* fun updateDashboardFilmList(filmsList : List<Film>){
         this.filmsList.clear()
         val dim = filmsList.size
-        this.filmsList.add(0, filmsList[dim-1])
-        this.filmsList.add(1, filmsList[dim-2])
-        //this.filmsList.addAll(filmsList)
+        //if(dim<=5){
+            this.filmsList.addAll(filmsList)
+        /* } else {
+            try {
+                this.filmsList.add(0, filmsList[dim - 7])
+                this.filmsList.add(1, filmsList[dim - 6])
+                this.filmsList.add(2, filmsList[dim - 5])
+                this.filmsList.add(3, filmsList[dim - 4])
+                this.filmsList.add(4, filmsList[dim - 3])
+                this.filmsList.add(5, filmsList[dim - 2])
+                this.filmsList.add(6, filmsList[dim - 1])
+            } catch (e: Exception){}
+        } */
         notifyDataSetChanged()
-    }
+    }   */
 
     class FilmViewHolder(itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView){
         val title: TextView = itemView.findViewById(R.id.tvFilmTitle)

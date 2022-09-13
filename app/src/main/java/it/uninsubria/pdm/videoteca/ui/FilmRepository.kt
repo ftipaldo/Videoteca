@@ -40,6 +40,34 @@ class FilmRepository {
     }
 
 
+    fun loadDashboardFilms(filmList: MutableLiveData<List<Film>>){
+        databaseReferenceFilms.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                try {
+                    val _filmList : List<Film> = snapshot.children.map { dataSnapshot ->
+                        dataSnapshot.getValue(Film::class.java)!!
+                    }
+                    val ML : MutableList<Film> = ArrayList()
+                    val dim = _filmList.size
+                    if(dim<=7){
+                        ML.addAll(_filmList)
+                    } else {
+                        for (i in 1..7) {
+                            ML.add(_filmList[dim-i])
+                        }
+                    }
+                    filmList.postValue(ML)
+                } catch (e : Exception){
+                }
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
+
     fun loadRentals(rentalsList: MutableLiveData<List<Ren>>, pUserId : String){
         databaseReferenceRentals.child(pUserId).addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
