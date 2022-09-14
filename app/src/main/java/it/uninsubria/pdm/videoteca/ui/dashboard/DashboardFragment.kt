@@ -27,8 +27,8 @@ class DashboardFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    //aggiungere global var isAdmin
-
+    //global var isAdmin
+    private val pIsAdmin = GlobalVar.isAdmin
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,14 +41,20 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//aggiungere controllo admin
-        binding.btnAdd.text = getString(R.string.btn_add_new_film)
-        binding.btnAdd.setOnClickListener {
-            val intent =
-                Intent(activity, NewFilmActivity::class.java)
-            intent.flags =
-                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
+        //controllo che sia un admin per il pulsante di inserimento nuovo film
+        if (pIsAdmin == "true") {
+            binding.btnAdd.text = getString(R.string.btn_add_new_film)
+            binding.btnAdd.setOnClickListener {
+                val intent =
+                    Intent(activity, NewFilmActivity::class.java)
+                intent.flags =
+                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+        } else {
+            binding.btnAdd.isEnabled = false
+            binding.btnAdd.isClickable = false
+            binding.btnAdd.visibility = View.GONE
         }
 
 

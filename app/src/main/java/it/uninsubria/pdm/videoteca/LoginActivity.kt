@@ -9,6 +9,8 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import it.uninsubria.pdm.videoteca.databinding.ActivityLoginBinding
 
 
@@ -61,8 +63,20 @@ class LoginActivity : AppCompatActivity() {
                                         Toast.LENGTH_SHORT
                                     ).show()
 
-
+                                    //imposto lo userID globale
                                     GlobalVar.glbUserId = firebaseUser.uid
+
+                                    val databaseReferenceAdmin : DatabaseReference = FirebaseDatabase.getInstance().getReference("Admin")
+                                    databaseReferenceAdmin.child(firebaseUser.uid).get().addOnSuccessListener {
+                                        val adm = it.value.toString()
+                                        //imposto isAdmin globale
+                                        if (adm == "admin") {
+                                            GlobalVar.isAdmin = "true"
+                                        } else {
+                                            GlobalVar.isAdmin = "false"
+                                        }
+                                    }
+
 
                                     val intent =
                                         Intent(this@LoginActivity, MainActivity::class.java)
