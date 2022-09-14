@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="8dp"
-    tools:context=".NewFilmActivity">
+    android:background="@color/yellow"
+    tools:context=".NewFilmActivity"
+    >
 
     <EditText
         android:id="@+id/etNewFilmTitle"
@@ -13,6 +15,8 @@
         android:layout_height="wrap_content"
         android:hint="Title"
         android:textSize="25sp"
+        android:textColorHint="@color/blue"
+        android:textColor="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,6 +27,8 @@
         android:layout_height="wrap_content"
         android:hint="Director(s)"
         android:textSize="18sp"
+        android:textColorHint="@color/blue"
+        android:textColor="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewFilmTitle" />
@@ -33,6 +39,8 @@
         android:layout_height="wrap_content"
         android:hint="Year"
         android:textSize="18sp"
+        android:textColorHint="@color/blue"
+        android:textColor="@color/blue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewFilmDirector" />
 
@@ -43,6 +51,8 @@
         android:layout_marginStart="32dp"
         android:hint="Length"
         android:textSize="18sp"
+        android:textColorHint="@color/blue"
+        android:textColor="@color/blue"
         app:layout_constraintStart_toEndOf="@+id/etNewFilmYear"
         app:layout_constraintTop_toBottomOf="@+id/etNewFilmDirector" />
 
@@ -53,6 +63,8 @@
         android:layout_marginBottom="8dp"
         android:hint="Description"
         android:textSize="18sp"
+        android:textColorHint="@color/blue"
+        android:textColor="@color/blue"
         app:layout_constraintBottom_toTopOf="@+id/etNewFilmAvailability"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,6 +77,8 @@
         android:layout_marginStart="24dp"
         android:hint="Availability"
         android:textSize="20sp"
+        android:textColorHint="@color/blue"
+        android:textColor="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -73,6 +87,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
+        android:textColor="@color/yellow"
+        android:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnAddNewFilm"
         app:layout_constraintStart_toEndOf="@+id/etNewFilmAvailability" />
@@ -83,6 +99,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:text="Add"
+        android:textColor="@color/yellow"
+        android:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

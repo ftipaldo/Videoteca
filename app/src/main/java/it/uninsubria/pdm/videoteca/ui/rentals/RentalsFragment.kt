@@ -5,18 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import it.uninsubria.pdm.videoteca.GlobalVar
 import it.uninsubria.pdm.videoteca.RentedFilmActivity
-import it.uninsubria.pdm.videoteca.SelectedFilmActivity
 import it.uninsubria.pdm.videoteca.databinding.FragmentRentalsBinding
-import it.uninsubria.pdm.videoteca.ui.FilmAdapter
 import it.uninsubria.pdm.videoteca.ui.FilmRentedAdapter
 
 class RentalsFragment : Fragment() {

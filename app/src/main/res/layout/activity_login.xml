@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@color/blue">
 
     <EditText
         android:id="@+id/etEmailLogin"
@@ -16,6 +17,8 @@
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textSize="30sp"
+        android:textColor="@color/yellow"
+        android:textColorHint="@color/yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,6 +33,8 @@
         android:inputType="textPassword"
         android:textAlignment="center"
         android:textSize="30sp"
+        android:textColor="@color/yellow"
+        android:textColorHint="@color/yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmailLogin" />
@@ -42,6 +47,8 @@
         android:ems="6"
         android:text="LogIn"
         android:textSize="25sp"
+        android:textColor="@color/blue"
+android:backgroundTint="@color/yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin" />

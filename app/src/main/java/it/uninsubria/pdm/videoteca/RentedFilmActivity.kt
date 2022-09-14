@@ -7,8 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import it.uninsubria.pdm.videoteca.databinding.FilmSpecificBinding
-import java.text.SimpleDateFormat
-import java.util.*
+
 
 class RentedFilmActivity : AppCompatActivity() {
 
@@ -74,11 +73,6 @@ class RentedFilmActivity : AppCompatActivity() {
 
 
     private fun UNrentFilm(pUserId:String, pFilmId:String, availability:String){
-        //lock sul db
-        //incrementi availability
-        //rimuovi child    con l'id del film (yyyy_fffff)    in Rentals > userId
-        //rimuovi il lock sul db
-
         val newAvailability = (availability.toInt() + 1).toString()
         val film_map = mapOf<String,String>(
             "availability" to newAvailability

@@ -1,10 +1,8 @@
 package it.uninsubria.pdm.videoteca.ui
 
 import androidx.lifecycle.MutableLiveData
-import com.google.android.gms.tasks.Task
 import com.google.firebase.database.*
 import java.lang.Exception
-import java.util.*
 import kotlin.collections.ArrayList
 
 class FilmRepository {

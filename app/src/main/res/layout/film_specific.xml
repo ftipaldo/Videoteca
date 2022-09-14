@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp">
+    android:layout_margin="16dp"
+    android:background="@color/blue">
 
     <TextView
         android:id="@+id/tvSpecificFilmTitle"
@@ -14,6 +15,8 @@
         android:hint="Title"
         android:textAlignment="center"
         android:textSize="30sp"
+        android:textColorHint="@color/yellow"
+        android:textColor="@color/yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,6 +29,8 @@
         android:hint="Director(s)"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:textColorHint="@color/yellow"
+        android:textColor="@color/yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSpecificFilmTitle" />
@@ -38,6 +43,8 @@
         android:hint="Year"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:textColorHint="@color/yellow"
+        android:textColor="@color/yellow"
         app:layout_constraintEnd_toStartOf="@+id/tvSpecificFilmLength"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +58,8 @@
         android:hint="Length"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:textColorHint="@color/yellow"
+        android:textColor="@color/yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tvSpecificFilmYear"
@@ -66,6 +75,8 @@
         android:layout_marginBottom="8dp"
         android:hint="Description"
         android:textSize="24sp"
+        android:textColorHint="@color/yellow"
+        android:textColor="@color/yellow"
         app:layout_constraintBottom_toTopOf="@+id/tvSpecificFilmAvailability"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,6 +90,8 @@
         android:hint="available: xx"
         android:textAlignment="center"
         android:textSize="30sp"
+        android:textColorHint="@color/yellow"
+        android:textColor="@color/yellow"
         app:layout_constraintBottom_toTopOf="@+id/btnSpecificFilmCommit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -90,6 +103,8 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:text=""
+        android:textColor="@color/blue"
+        android:backgroundTint="@color/yellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -100,6 +115,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginBottom="16dp"
         android:text=""
+        android:textColor="@color/blue"
+        android:backgroundTint="@color/yellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

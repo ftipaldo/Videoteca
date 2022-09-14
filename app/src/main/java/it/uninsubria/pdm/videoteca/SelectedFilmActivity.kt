@@ -71,12 +71,6 @@ class SelectedFilmActivity : AppCompatActivity() {
 
 
     private fun rentFilm(pUserId:String, pFilmId:String, availability:String){
-        //if availability >=1
-        //lock sul db
-        //decrementi availability
-        //aggiungi child    con l'id del film (yyyy_fffff) e la data odierna    in Rentals > userId
-        //rimuovi il lock sul db
-
         if (availability.toInt() >= 1) {
             val newAvailability = (availability.toInt() - 1).toString()
             val film_map = mapOf<String, String>(
